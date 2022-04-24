@@ -3,6 +3,7 @@ import Player from './player.js';
 import botAI from '../src/bot.ai.js';
 import Welcome from './components/Welcome.js';
 import WinnerText from './components/endgame/WinnerText.js';
+import Blocker from './boardAbilities/blocker.js';
 
 //Start
 let timer;
@@ -13,6 +14,7 @@ let gameBoard;
 let player;
 let bot;
 let players = [];
+let blocker;
 
 const startGame = (size) => {
   //Setup
@@ -32,6 +34,7 @@ const startGame = (size) => {
   player = new Player(gameBoard, getColor(colors));
   bot = new Player(gameBoard, getColor(colors), gameBoard[0].length**2);
   players = [player, bot];
+  blocker = new Blocker(gameBoard);
   
   // Start/ upkeep countdown
   let timerInterval = setInterval(() => {
@@ -71,7 +74,7 @@ const startGame = (size) => {
       players.forEach(player => player.controlGo());
       clearInterval(timerInterval);
   
-      WinnerText(document.querySelector('.board'), help.getWinner(gameBoard));
+      WinnerText(document.querySelector('.board'), help.getWinner(blocker.block(gameBoard)));
       inSession = false;
       return;
     }

@@ -205,6 +205,25 @@
   cursor: pointer;
 }
 
+.blocker-square {
+  background-color: rgba(0,0,0,0.75) !important;
+  box-shadow: 0 0 20px rgba(0,0,0,0.85) !important;
+  border: none !important;
+  transform-origin: center !important;
+  animation: 500ms gg  ease infinite !important;
+}
+
+@keyframes gg {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    transform: translate3d(5%, 5%, 0);
+    width: 90%;
+    height: 90%;
+  }
+}
 
 /* ANIMATIONS */
 @keyframes grow {

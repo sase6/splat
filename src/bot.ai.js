@@ -23,7 +23,7 @@ const botAI = (bot) => {
 
   setTimeout(() => {
     bot.move(randomBotMove());
-    botAI(bot);
+    botAI(bot); //Comment to Stop AI
   }, help.getRandomRange(minBotResponse, maxBotResponse));
 };
 
