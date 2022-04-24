@@ -1,11 +1,16 @@
 
 //Get a color 
 let colors = ['indianred', 'skyblue', 'thistle'];
+let colorsCopy = colors.slice();
 const getColor = () => {
   const index = Math.floor(Math.random() * colors.length);
   let color =  colors[index];
   colors.splice(index, 1);
   return color;
+};
+
+const resetColors = () => {
+  colors = colorsCopy;
 };
 
 //Creates an HTML Element
@@ -87,4 +92,22 @@ const getWinner = (board) => {
   console.log('Winner: ', highest.name, '\nScore: ', highest.score);
 };
 
-export default {createElement, drawBoard, getRandomRange, padZero, getColor, getWinner};
+const getGameBoard = (size) => {
+  var gameBoard = [];
+  for (var i = 0; i < size; i++) {
+    var rows = [];
+    for (var j = 0; j < size; j++) {
+      rows.push(0);
+    }
+    gameBoard.push(rows);
+  }
+  return gameBoard;
+};
+
+const clearAll = () => {
+  console.log('Clearing Game');
+  resetColors();
+  document.querySelector('.board').remove();
+};
+
+export default {createElement, drawBoard, getRandomRange, padZero, getColor, getWinner, getGameBoard, clearAll};

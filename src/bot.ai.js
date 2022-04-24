@@ -1,9 +1,10 @@
 import help from '../helper/help.js';
+import setup from './index.js';
 
-const maxBotResponse = 30;
-const minBotResponse = 10;
+const maxBotResponse = 132;
+const minBotResponse = 65;
 
-const randomBotMove = (bot, constraints) => {
+const randomBotMove = (constraints) => {
   const randomizedNum = Math.random() * 1;
   if (randomizedNum <= .25) {
     return 'up';
@@ -16,7 +17,10 @@ const randomBotMove = (bot, constraints) => {
   }
 };
 
+//Main Bot Ai (Random)
 const botAI = (bot) => {
+  if (setup.getInSession() === false) return;
+
   setTimeout(() => {
     bot.move(randomBotMove());
     botAI(bot);

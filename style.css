@@ -60,6 +60,83 @@
 }
 
 
+/* Welcome Screen */
+.welcome {
+  position: absolute;
+  width: 450px;
+  height: 200px;
+  background-color: rgba(0,0,0,0.02);
+  backdrop-filter: blur(10px);
+  top: calc(40vh - 100px);
+  left: calc(50vw - 525px);
+  display: grid;
+  grid-template-rows: 50% 50%;
+  border-radius: 10px;
+  opacity: 0;
+  animation: 500ms slideRight forwards;
+}
+
+.welcome-keys-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  place-items: center;
+}
+
+.welcome-key {
+  width: 70%;
+  height: 70%;
+  border-radius: 15%;
+  background-color: rgba(0,0,0,0.045);
+  display: grid;
+  place-items: center;
+  box-shadow: 5px 5px 1px rgba(0,0,0,0.09);
+  font-size: 35px;
+  color: rgba(0,0,0,0.35);
+  font-weight: bold;
+}
+.welcome-key:hover {
+  cursor: pointer;
+  transform: translateX(5px);
+  box-shadow: none;
+}
+
+.btn-welcome-start {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  top: 5%;
+  left: 10%;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  place-items: center;
+  border: none;
+  background-color: transparent;
+}
+.btn-welcome-start * {
+  width: 85% !important;
+  position: relative;
+}
+
+.flying-text {
+  position: absolute;
+  top: -50px;
+  font-size: 20px;
+  opacity: 0;
+  top: -100px;
+}
+
+.flying-text-up {
+  position: absolute;
+  top: 150px;
+  opacity: 0;
+  color: rgba(0,0,0,0.35);
+  font-weight: 900;
+  font-size: 20px;
+}
+
+
 
 /* ANIMATIONS */
 @keyframes grow {
@@ -76,5 +153,68 @@
 @keyframes growFont {
   100% {
     font-size: 18px;
+  }
+}
+
+@keyframes slideRight {
+  100% {
+    transform: translateX(300px);
+    opacity: 1;
+  }
+}
+
+@keyframes textFlyIn {
+  0% {
+    top: -100px;
+    opacity: 0;
+  }
+  100% {
+    top: -35px;
+    opacity: 1;
+  }
+}
+
+@keyframes textFlyOut {
+  0% {
+    top: -35px;
+    opacity: 1;
+  }
+  100% {
+    top: -100px;
+    opacity: 0;
+  }
+}
+
+@keyframes textSlideUp {
+  0% {
+    top: 150px;
+    opacity: 0;
+  }
+  100% {
+    top: 100px;
+    opacity: 1;
+  }
+}
+
+@keyframes textSlideDown {
+  0% {
+    top: 100px;
+    opacity: 1;
+  }
+  100% {
+    top: 150px;
+    opacity: 0;
+  }
+}
+
+@keyframes removeWelcome {
+  0% {
+    left: calc(50vw - 225px);
+    opacity: 1;
+  }
+  100% {
+    left: calc(50vw + 125px);
+    opacity: 0;
+    display: none;
   }
 }
