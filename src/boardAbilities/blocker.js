@@ -9,11 +9,12 @@ class Blocker {
 
   init(board) {
     //Sets the Css For the blocker nodes
-    for (var i = 0; i < help.getRandomRange(0, 4); i++) {
-      this.blockers.push(help.getRandomRange(2, this.boardSize));
+    for (var i = 0; i < help.getRandomRange(1, 4); i++) {
+      this.blockers.push(help.getRandomRange(2, this.boardSize - 2));
     }
 
     this.blockers.forEach(blockerNum => {
+      console.log(blockerNum);
       document.querySelector(`.board-square-${blockerNum}`).classList.add('blocker-square');
     });
   }

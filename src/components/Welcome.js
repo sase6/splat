@@ -1,9 +1,11 @@
 import help from '../../helper/help.js';
 import setup from '../index.js';
+import Changelog from './changelog/changelog.js';
 
 const Welome = (start) => {
   //Main Welcome View
   let el = help.createElement(document.querySelector('#root'), ['welcome']);
+  let changelog = new Changelog(el);
 
   //Side Welcome: 
   var arrowValues = ["↑", "↓", "→", "←"];

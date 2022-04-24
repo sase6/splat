@@ -213,6 +213,41 @@
   animation: 500ms gg  ease infinite !important;
 }
 
+/* Changelog */
+.changelog-container {
+  position: absolute;
+  height: max-content;
+  width: 100%;
+  display: grid;
+  grid-template-rows:  50% 50%;
+  top: 125%;
+  place-items: center;
+  grid-row-gap: 10px;
+}
+
+.changelog-individual-change {
+  display: grid;
+  grid-template-rows: max-content max-content;
+  width: 100%;
+  height: max-content;
+}
+
+.changelog-header {
+  font-size: 20px;
+  font-weight: 900;
+  font-family: sans-serif;
+  color: rgba(0,0,0,0.65);
+  width: 100%;
+}
+
+.changelog-body {
+  color: rgba(0,0,0,0.4);
+  width: 100%;
+  font-size: 14px;
+  font-family: sans-serif;
+  padding-left: 2px;
+}
+
 @keyframes gg {
   0% {
     width: 100%;
