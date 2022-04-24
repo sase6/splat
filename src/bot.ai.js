@@ -1,8 +1,8 @@
 import help from '../helper/help.js';
 import setup from './index.js';
 
-const maxBotResponse = 65;
-const minBotResponse = 5;
+const maxBotResponse = 90;
+const minBotResponse = 25;
 
 const randomBotMove = (constraints) => {
   const randomizedNum = Math.random() * 1;
