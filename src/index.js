@@ -2,6 +2,7 @@ import help from '../helper/help.js';
 import Player from './player.js';
 import botAI from '../src/bot.ai.js';
 import Welcome from './components/Welcome.js';
+import WinnerText from './components/endgame/WinnerText.js';
 
 //Start
 let timer;
@@ -18,9 +19,9 @@ const startGame = (size) => {
   inSession = true;
   gameBoard = help.getGameBoard(size || 5);
   help.drawBoard(gameBoard);
-  timer = [0, 12];
-  player = new Player(gameBoard);
-  bot = new Player(gameBoard, gameBoard[0].length**2);
+  timer = [0, 9];
+  player = new Player(gameBoard, help.getColor());
+  bot = new Player(gameBoard, help.getColor(), gameBoard[0].length**2);
   players = [player, bot];
   
   // Start/ upkeep countdown
@@ -61,7 +62,7 @@ const startGame = (size) => {
       players.forEach(player => player.controlGo());
       clearInterval(timerInterval);
   
-      help.getWinner(gameBoard);
+      WinnerText(document.querySelector('.board'), help.getWinner(gameBoard));
       inSession = false;
       return;
     }
@@ -73,20 +74,7 @@ const startGame = (size) => {
 };
 
 
-//MGS:
-// startGame(3);
-
-//FOR NEW GAME:
-// help.clearAll();
-// startGame(3);
-
-Welcome(() => {
-  startGame(5);
-  setInterval(() => {
-    help.clearAll();
-    startGame(5);
-  }, 15000);
-});
+Welcome(() => startGame(5));
 
 //Entity Funcs:
 const getPlayer = () => player;

@@ -6,6 +6,7 @@ const getColor = () => {
   const index = Math.floor(Math.random() * colors.length);
   let color =  colors[index];
   colors.splice(index, 1);
+  console.log(colors, index, color);
   return color;
 };
 
@@ -91,6 +92,7 @@ const getWinner = (board) => {
 
   // console.log('Winner: ', highest.name, '\nScore: ', highest.score);
   document.querySelector('.timer-text').innerText = (`Winner: ${highest.name}, Score: ${highest.score}`);
+  return highest.name;
 };
 
 const getGameBoard = (size) => {

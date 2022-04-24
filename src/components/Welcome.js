@@ -2,14 +2,50 @@ import help from '../../helper/help.js';
 import setup from '../index.js';
 
 const Welome = (start) => {
-  let el = help.createElement(document.body, ['welcome']);
-  
+  //Main Welcome View
+  let el = help.createElement(document.querySelector('#root'), ['welcome']);
+
+  //Side Welcome: 
+  var arrowValues = ["↑", "↓", "→", "←"];
+  let sideWelcomeContainer;
+  let term = true;
+  let getArrowValues = () => {
+    if (term) {
+      term = !term;
+      return arrowValues.slice(0,2);
+    } else {
+      term = !term;
+      return arrowValues.slice(2);
+    }
+  }
+
+  var makeSideWelcomeContainer = () => {
+    sideWelcomeContainer = help.createElement(el, ['side-welcome-container']);
+    getArrowValues().forEach(key => Keys(sideWelcomeContainer, key));
+  };
+
+  makeSideWelcomeContainer();
+
+  setInterval(() => {
+    sideWelcomeContainer.style.animation = '800ms keySlideOut ease-in forwards';
+    setTimeout(() => {
+      if (sideWelcomeContainer) {
+        sideWelcomeContainer.style.animation = '800ms keySlideIn ease-out forwards';
+        sideWelcomeContainer.innerHTML = "";
+        getArrowValues().forEach(key => Keys(sideWelcomeContainer, key));
+        //change animation and text
+      }
+    }, 850);
+  }, 4000);
+
+  //Main Welcome: 
+  let mainWelcomeContainer = help.createElement(el, ['main-welcome-container']);
   //Keys-Container
-  let keysContainer = help.createElement(el, ['welcome-keys-container']);
+  let keysContainer = help.createElement(mainWelcomeContainer, ['welcome-keys-container']);
   ['W', 'A', 'S', 'D'].forEach(key => Keys(keysContainer, key, FlyingText));
 
   //Start
-  let startContainer = help.createElement(el, ['welcome-start-container']);
+  let startContainer = help.createElement(mainWelcomeContainer, ['welcome-start-container']);
   let startButton = help.createElement(startContainer, ['btn-welcome-start'], 'button');
   ['S', 'T', 'A', 'R', 'T'].forEach(key => Keys(startButton, key));
   FlyingText(startButton, 'START', 'up');
@@ -33,7 +69,9 @@ const Keys = (parent, val, next) => {
 
   if (next) {
     next(keyNode, val);
-    keyNode.addEventListener('mouseenter', () => keyNode.children[0].style.animation = '500ms textFlyIn forwards');
+    keyNode.addEventListener('mouseenter', () => {
+      keyNode.children[0].style.animation = '500ms textFlyIn forwards';
+    });
     keyNode.addEventListener('mouseleave', () => keyNode.children[0].style.animation = '500ms textFlyOut forwards');
   }
 };
@@ -47,6 +85,7 @@ const FlyingText = (parent, text, dir = 'down') => {
     "S": 'DOWN',
     "D": 'RIGHT',
   };
+
   let flyingText = help.createElement(parent, ['flying-text',  `flying-text-${text}`, `flying-text-${dir}`]);
   if (dir !== 'down') {
     flyingText.innerText = text;

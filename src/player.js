@@ -1,10 +1,9 @@
-import help from "../helper/help.js";
 
 class Player {
-  constructor(gameBoard, pos) {
+  constructor(gameBoard, color, pos = 1,) {
     this.position = pos || 1;
     this.lengthOfCol = gameBoard[0].length;
-    this.color = help.getColor();
+    this.color = color;
     this.mount();
     this.ready = true;
     this.timeout = 5;
