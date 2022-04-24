@@ -18,7 +18,7 @@ const startGame = (size) => {
   inSession = true;
   gameBoard = help.getGameBoard(size || 5);
   help.drawBoard(gameBoard);
-  timer = [0, 6];
+  timer = [0, 12];
   player = new Player(gameBoard);
   bot = new Player(gameBoard, gameBoard[0].length**2);
   players = [player, bot];
@@ -80,7 +80,13 @@ const startGame = (size) => {
 // help.clearAll();
 // startGame(3);
 
-Welcome(() => startGame(4));
+Welcome(() => {
+  startGame(5);
+  setInterval(() => {
+    help.clearAll();
+    startGame(5);
+  }, 15000);
+});
 
 //Entity Funcs:
 const getPlayer = () => player;

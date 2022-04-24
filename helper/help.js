@@ -89,7 +89,8 @@ const getWinner = (board) => {
     }
   }
 
-  console.log('Winner: ', highest.name, '\nScore: ', highest.score);
+  // console.log('Winner: ', highest.name, '\nScore: ', highest.score);
+  document.querySelector('.timer-text').innerText = (`Winner: ${highest.name}, Score: ${highest.score}`);
 };
 
 const getGameBoard = (size) => {
