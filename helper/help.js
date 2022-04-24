@@ -1,19 +1,4 @@
 
-//Get a color 
-let colors = ['indianred', 'skyblue', 'thistle'];
-let colorsCopy = colors.slice();
-const getColor = () => {
-  const index = Math.floor(Math.random() * colors.length);
-  let color =  colors[index];
-  colors.splice(index, 1);
-  console.log(colors, index, color);
-  return color;
-};
-
-const resetColors = () => {
-  colors = colorsCopy;
-};
-
 //Creates an HTML Element
 const createElement = (parent, classlist = [], type = 'div') => {
   let element = document.createElement(type);
@@ -109,8 +94,7 @@ const getGameBoard = (size) => {
 
 const clearAll = () => {
   console.log('Clearing Game');
-  resetColors();
   document.querySelector('.board').remove();
 };
 
-export default {createElement, drawBoard, getRandomRange, padZero, getColor, getWinner, getGameBoard, clearAll};
+export default {createElement, drawBoard, getRandomRange, padZero, getWinner, getGameBoard, clearAll};

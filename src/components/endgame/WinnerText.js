@@ -23,7 +23,7 @@ const WinnerText = (parent, winner) => {
 
 const onNewGame = () => {
   console.log('Starting New Game: ');
-  prompt("IN TESTING: Please Refresh!");
+  setup.resetMain();
 };
 
 export default WinnerText;

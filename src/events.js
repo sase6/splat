@@ -8,9 +8,9 @@ document.body.addEventListener('keyup', e => {
     player.move('up');
   } else if (e.key === 'a' || e.key === 'ArrowLeft') {
     player.move('left');
-  } else if (e.key === 's' || e.key === 'ArrowRight') {
+  } else if (e.key === 's' || e.key === 'ArrowDown') {
     player.move('down');
-  } else if (e.key === 'd' || e.key === 'ArrowDown') {
+  } else if (e.key === 'd' || e.key === 'ArrowRight') {
     player.move('right');
   }
 });

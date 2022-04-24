@@ -16,12 +16,21 @@ let players = [];
 
 const startGame = (size) => {
   //Setup
+  let colors = ['indianred', 'skyblue', 'orange', 'thistle', 'lightseagreen'];
+
+  const getColor = (colors) => {
+    let index = Math.floor(Math.random()*colors.length);
+    var color = colors[index];
+    colors.splice(index, 1);
+    return color;
+  };
+
   inSession = true;
   gameBoard = help.getGameBoard(size || 5);
   help.drawBoard(gameBoard);
   timer = [0, 9];
-  player = new Player(gameBoard, help.getColor());
-  bot = new Player(gameBoard, help.getColor(), gameBoard[0].length**2);
+  player = new Player(gameBoard, getColor(colors));
+  bot = new Player(gameBoard, getColor(colors), gameBoard[0].length**2);
   players = [player, bot];
   
   // Start/ upkeep countdown
@@ -73,6 +82,10 @@ const startGame = (size) => {
   setTimeout(() => (botAI(bot)), 1000);
 };
 
+const resetMain = () => {
+  help.clearAll();
+  startGame(5);
+}; 
 
 Welcome(() => startGame(5));
 
@@ -80,4 +93,4 @@ Welcome(() => startGame(5));
 const getPlayer = () => player;
 const getInSession = () => inSession;
 //Export
-export default {getPlayer, getInSession, startGame};
+export default {getPlayer, getInSession, startGame, resetMain};
