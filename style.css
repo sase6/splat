@@ -5,6 +5,7 @@
 * {
   margin: 0;
   padding: 0;
+  z-index: 1;
 }
 
 #root {
@@ -29,6 +30,8 @@
   background-color: rgba(0,0,0,0.045);
   animation: 1800ms ease-out grow forwards;
   box-sizing: border-box;
+  position: relative !important;
+  opacity: 0.65 !important;
 }
 
 .timer-container {
@@ -159,6 +162,7 @@
 
 /* Winner Text */
 .winner-text {
+  z-index: 100;
   position: absolute;
   width: 90%;
   height: 90%;
@@ -210,7 +214,7 @@
   box-shadow: 0 0 20px rgba(0,0,0,0.85) !important;
   border: none !important;
   transform-origin: center !important;
-  animation: 500ms gg  ease infinite !important;
+  animation: 500ms blockerGrow  ease infinite !important;
 }
 
 /* Changelog */
@@ -248,7 +252,54 @@
   padding-left: 2px;
 }
 
-@keyframes gg {
+.board-square-6 {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(250,218,185,0.92) !important;
+  backdrop-filter: blur(30) !important;
+  border-radius: 15px;
+  border: none !important;
+  box-shadow: 0 0 15px rgba(0,0,0,0.25);
+  animation: 1800ms stickyGrow infinite ease-in-out !important;
+}
+
+.firefly {
+  position: absolute;
+  width: 10px;
+  height: 8px;
+  border-radius: 8px;
+  z-index: 0 !important;
+}
+
+
+/* ANIMATIONS */
+@keyframes glow {
+  50% {
+    background-color: rgba(255, 0, 0, .1);
+    box-shadow: 0 0 10px rgba(255, 0, 0, .35);
+    width: 12px;
+    height: 10px;
+    transform: rotateY(20deg);
+  }
+}
+
+@keyframes stickyGrow {
+  0% {
+    width: 100%;
+    height: 100%;
+    /* transform: translate3d(25%, 25%, 0); */
+  }
+  50% {
+    width: 120%;
+    height: 120%;
+    z-index: 2;
+    transform: translate3d(-10%, -10%, 0);
+    border-radius: 0;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+  }
+}
+
+@keyframes blockerGrow {
   0% {
     width: 100%;
     height: 100%;
@@ -260,7 +311,6 @@
   }
 }
 
-/* ANIMATIONS */
 @keyframes grow {
   60% {
     width: 25px;

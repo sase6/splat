@@ -4,8 +4,13 @@ import botAI from '../src/bot.ai.js';
 import Welcome from './components/Welcome.js';
 import WinnerText from './components/endgame/WinnerText.js';
 import Blocker from './boardAbilities/blocker.js';
+import Sticky from './boardAbilities/sticky.js';
+import FireFly from './components/env/fireflies.js';
 
 //Start
+let fireFly = new FireFly();
+fireFly.make(19);
+
 let timer;
 const initTimer = () => (timer[0]*60 + timer[1]);
 
@@ -35,7 +40,8 @@ const startGame = (size) => {
   bot = new Player(gameBoard, getColor(colors), gameBoard[0].length**2);
   players = [player, bot];
   blocker = new Blocker(gameBoard);
-  
+  Sticky(document.querySelector('.board-square-6'));
+
   // Start/ upkeep countdown
   let timerInterval = setInterval(() => {
     const timerNode = document.querySelector('.timer-text');

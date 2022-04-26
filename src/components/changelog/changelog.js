@@ -5,12 +5,12 @@ class Changelog {
     this.parent = parent;
     this.changes  = [
       [
-        "Added Blocker Tiles to the Game: ",
-        "Stepping on blocker tiles will not result in an increasing score count"
+        "Fireflies: ",
+        "To make the game more lively, I have added unique fireflies as apart of the game environment"
       ],
       [
-        "Added Quality of Life Improvements: ",
-        "Players can now replay, and see new changes on this changelog. Also Added Arrow Keys as valid Inputs"
+        "Added Blocker Tiles to the Game: ",
+        "Stepping on blocker tiles will not result in an increasing score count"
       ],
     ];
     this.build();
