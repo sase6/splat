@@ -67,7 +67,7 @@ const getWinner = (board) => {
 
   var highest = {name: 'default', score: 0};
   for (var x in participants) {
-    if (x === '0') continue;
+    if (x === '0' || x === 'purple') continue;
 
     if (participants[x] > highest.score) {
       highest.name = x;
@@ -97,4 +97,14 @@ const clearAll = () => {
   document.querySelector('.board').remove();
 };
 
-export default {createElement, drawBoard, getRandomRange, padZero, getWinner, getGameBoard, clearAll};
+const doIfRanTrue = (num, cb) => {
+  let random = Math.floor(Math.random() * 100);
+  if (random < num) {
+    cb(); 
+    return;
+  }
+
+  return false;
+};
+
+export default {createElement, drawBoard, getRandomRange, padZero, getWinner, getGameBoard, clearAll, doIfRanTrue};
