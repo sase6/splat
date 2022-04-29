@@ -11,7 +11,7 @@ class PaintBrush {
       [16,17,18,19,20],
       [21,22,23,24,25],
     ];
-    this.chanceOfBrush = 80;
+    this.chanceOfBrush = 21;
     this.rowNum = rowNum;
     this.getGameboard = getGameboard;
 
