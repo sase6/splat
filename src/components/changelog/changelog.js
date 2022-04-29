@@ -5,8 +5,8 @@ class Changelog {
     this.parent = parent;
     this.changes  = [
       [
-        "Fireflies: ",
-        "To make the game more lively, I have added unique fireflies as apart of the game environment"
+        "Paint Brush: ",
+        "The Paint Bush has a 21% chance of spawning. Rolls the map with a paint brush, painting one row... (players will LOSE their 'point')"
       ],
       [
         "Added Blocker Tiles to the Game: ",
